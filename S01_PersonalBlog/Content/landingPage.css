@@ -1,0 +1,58 @@
+﻿body,html {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    padding-top: 50px;
+    background-image: url("/Content/Images/landing_page_background.jpeg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: whitesmoke;
+    position:relative;
+}
+.search-span{
+    font-size: 28px;
+    text-align:right;
+}
+
+.header-text{
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+.header-text span{
+    border-bottom: 2px solid grey;
+}
+.log-in-row{
+  margin-top: 5%;
+  margin-bottom: 15%;
+}
+
+
+@media only screen and (min-width:992px) {
+    .register-div{
+      padding-left: 27%;
+    }
+    .checkbox{
+      padding-left: 22px;
+    }
+    .login-div{
+        border-right: 1px solid #eee;
+    }
+}
+
+@media only screen and (max-width:992px) {
+    .checkbox{
+    padding-left: 22px;
+    }
+    .search-btn {
+        margin-left: 0px;
+        font-size: 2rem;
+        padding: 20px 5px;
+        border-radius: 50%;
+        margin-top: 7px;
+    }
+}

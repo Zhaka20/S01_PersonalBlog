@@ -1,0 +1,50 @@
+﻿@model S01_PersonalBlog.ViewModels.PostIndexViewModel
+@using S01_PersonalBlog.Custom_helpers
+@using Ganss.XSS;
+
+@{ 
+    var sanitizer = new HtmlSanitizer();
+    var sanitizedPostHeader = sanitizer.Sanitize(Model.Header);
+}
+
+<div class="post">
+        <div class="row">
+            <div class="col col-md-10 text-left col-md-offset-1">
+                <h3 class="post-title"><a href="@Url.RouteUrl("Post", new { action = "Details", id = Model.PostID })">@Html.DisplayFor(model => model.Title)</a></h3>
+            </div>
+        </div>
+
+        <div class="row bg-info header vertical-align">
+            <div class="col-xs-3">
+                <div class="thumbs-up-div"><span class="label label-success" title="Likes"><span class="glyphicon glyphicon-thumbs-up"></span></span><span class="badge likes-badge">@Html.DisplayFor(model => model.Likes)</span></div>
+                <div class="thumbs-down-div"><span class="label label-danger" title="DisLikes"><span class="glyphicon glyphicon-thumbs-down"></span></span><span class="badge dislikes-badge">@Html.DisplayFor(model => model.DisLikes)</span></div>
+            </div>
+            <div class="col-xs-7 col-md-4">
+                <h4><span class="text-info">Posted @Html.DisplayFor(model => model.PostDate)</span></h4>
+            </div>
+            <div class="col-xs-7 col-md-5 author-div">
+                <a href="@Url.RouteUrl("Default", new { action = "Details", controller = "Bloggers", id = Model.Author.BloggerId })" class="author-link">
+                    <span class="author-span">Author</span>
+                    <span class="author-email"> @Html.DisplayFor(model => model.Author.NickName) </span>
+                    <img @Html.GetImageURL(Model.Author.ImageFileName) class="author-avatar"/>
+                </a>
+            </div>
+        </div>
+
+        <div class="row body">
+            <div class="col col-md-9 post-content">
+                @Html.Raw(sanitizedPostHeader)
+            </div>
+        </div>
+
+        <div class="row bg-primary footer">
+            <div class="col-xs-3">
+                <span class="label label-success" title="Comments"><span class="glyphicon glyphicon-comment"></span></span> @Html.DisplayFor(model => model.NumOfComments)
+            </div>
+            <div class="col col-md-4 col-xs-7">
+                <span class="details-span"> @Html.RouteLink("Details", "Post", new { Action = "Details", id = Model.PostID }, new { @class = "details-link" })</span>
+            </div>
+        </div>
+</div>
+<br />
+<hr />

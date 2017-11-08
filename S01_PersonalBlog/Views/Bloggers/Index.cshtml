@@ -1,0 +1,51 @@
+﻿@model PagedList.IPagedList<S01_PersonalBlog.ViewModels.BloggersViewModel>
+@using S01_PersonalBlog.Custom_helpers
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    ViewBag.PageClass = ViewBag.PageId = "bloggers-index-page";
+}
+
+<div id="bloggers-page">
+
+    <h2>Bloggers</h2>
+
+    @foreach (var modelItem in Model)
+    {
+        <div class="blogger-div">
+            <div class="container">
+                <div class="row bg-info header-row">
+                    <div class="col col-md-6 bg-info">
+                        <span class="nickname">@Html.DisplayFor(_ => modelItem.NickName)</span>
+                    </div>
+                </div>
+                <div class="row content-row">
+                    <div class="col col-md-2">
+                        <img @Html.GetImageURL(modelItem.ImageFile) class="avatar img-rounded" />                    
+                    </div>
+                    <div class="col col-md-10">
+                        @Html.DisplayFor(_ => modelItem.About)
+                    </div>
+                </div>
+                <div class="row bg-primary footer-row">
+                    <div class="col col-md-3">
+                        <span class="details-span">
+                            @Html.RouteLink(linkText: "Details", routeName: "Default",
+                                            routeValues: new
+                                            {
+                                                action = "Details",
+                                                controller = "Bloggers",
+                                                id = modelItem.BloggerId
+                                            },
+                                                htmlAttributes: new { @class = "details-link" })
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+    }
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", "Bloggers", new { page }))
+</div>

@@ -1,0 +1,132 @@
+﻿@using S01_PersonalBlog.Custom_helpers
+@using Microsoft.AspNet.Identity;
+@using Ganss.XSS;
+
+@model S01_PersonalBlog.ViewModels.PostDetailViewModel
+
+@{
+    ViewBag.Title = "Details";
+    ViewBag.PageClass = ViewBag.PageId = "posts-details-page";
+    string UserId = User.Identity.GetUserId();
+    bool IsAdmin = User.IsInRole("Admin");
+    var sanitizer = new HtmlSanitizer();
+    var sanitizedPostContent = sanitizer.Sanitize(Model.Content);
+}
+
+<h2>Details</h2>
+<ul class="pager"><li class="previous">@Html.RouteLink("Back to Index", "Post", new { Action = "Index" })</li></ul>
+<hr />
+
+<div class="row">
+    <div class="col col-md-10 text-left col-md-offset-1">
+        <h3 class="post-title">@Html.DisplayFor(model => model.Title)</h3>
+    </div>
+</div>
+
+<div class="row bg-info info-row vertical-align">
+    <div class="col-xs-3">
+        <div class="thumbs-up-div"><span class="label label-success" title="Likes"><span class="glyphicon glyphicon-thumbs-up"></span></span><span class="badge likes-badge">@Html.DisplayFor(model => model.Likes)</span></div>
+        <div class="thumbs-down-div"><span class="label label-danger" title="DisLikes"><span class="glyphicon glyphicon-thumbs-down"></span></span><span class="badge dislikes-badge">@Html.DisplayFor(model => model.DisLikes)</span></div>
+    </div>
+    <div class="col-xs-7 col-md-4">
+        <h4><span class="text-info">Posted @Html.DisplayFor(model => model.PostDate)</span></h4>
+    </div>
+    <div class="col-xs-7 col-md-5 author-div">
+        <a href="@Url.RouteUrl("Default", new { action = "Details", controller = "Bloggers", id = Model.Author.BloggerId })" class="author-link">
+            <span class="author-span">Author</span>
+            <span class="author-email"> @Html.DisplayFor(model => model.Author.NickName) </span>
+            <img @Html.GetImageURL(Model.Author.ImageFileName) class="author-avatar" />
+        </a>
+    </div>
+</div>
+<div class="row" id="post-content">
+    <div class="col col-md-9">
+        @Html.Raw(sanitizedPostContent)
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col col-md-7">
+        <div class="row">
+            <div class="col col-md-7">
+                <div class="post-tags-div-label"><span class="glyphicon glyphicon-tags" title="Tags"></span>  Tags</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-md-7 post-tags">
+                @Html.TagsFromCollection(Model.Tags)
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row bg-primary info-row">
+    <div class="col col-xs-3">
+        <span class="label label-success" title="Comments"><span class="glyphicon glyphicon-comment"></span></span> @Html.DisplayFor(model => model.NumOfComments)
+    </div>
+    <div class="col-xs-6 vote-div">
+        @using (Html.BeginRouteForm("Post", new { action = "UpVote", id = Model.PostID}, FormMethod.Post,new { @class = "post-like-vote-form" }))
+        {
+            @Html.AntiForgeryToken();
+            <button type="submit" class="like-link" data-like-post-trigger >
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+                <span> Like</span>               
+                <span class="post-liked-indicator @Html.UserLiked(Model.CurrentUserVote)"></span>
+            </button>
+        }
+        &nbsp;or&nbsp;
+        @using (Html.BeginRouteForm("Post", new { action = "DownVote", id = Model.PostID}, FormMethod.Post, new { @class = "post-like-vote-form" }))
+        {
+            @Html.AntiForgeryToken();
+            <button type="submit" class="dislike-link" data-dislike-post-trigger>
+                <span>Dislike</span>
+                <span class="glyphicon glyphicon-thumbs-down"></span>
+                <span class="post-disliked-indicator @Html.UserDisliked(Model.CurrentUserVote)"></span>
+            </button>
+        }
+    </div>
+</div>
+@if (Model.AuthorID == UserId || IsAdmin)
+{
+    <div class="row">
+        <div class="col col-md-offset-1">
+            @Html.RouteLink("Edit", "Post", new { Action = "Edit", id = Model.PostID }) |
+            @Html.RouteLink("Delete", "Post", new { Action = "Delete", id = Model.PostID })
+        </div>
+    </div>
+}
+<hr />
+@using (Html.BeginRouteForm("Comment", new { Action = "Create", postId = Model.PostID }, FormMethod.Post, new { @class = "comment-form" }))
+{
+    @Html.AntiForgeryToken();
+    <div class="form-group">
+        @Html.Label("Comment", htmlAttributes: new { @for = "comment-text" })
+        @Html.TextAreaFor(model => model.Comment, new { @class = "form-control", id = "comment-text", rows = "3" })
+        @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+    </div>
+        <input type="submit" value="Submit" class="btn btn-primary"/>
+}
+<hr />
+<h3>Comments</h3>
+<div class=" row post-comments">
+    @foreach (var comment in Model.Comments.Where(c => c.ParentCommentID == null))
+    {
+        @Html.Partial("_Comment", comment);
+    }
+</div>
+
+@using (Html.BeginRouteForm("Comment", new { Action = "Create", postId = Model.PostID }, FormMethod.Post, new { @class = "comment-form", id="comment-reply-form" }))
+{
+    @Html.AntiForgeryToken();
+    <div class="form-group">
+        @Html.Label("Comment", htmlAttributes: new { @for = "comment-text" })
+        @Html.TextAreaFor(model => model.Comment, new { @class = "form-control", id = "comment-text", rows = "3" })
+        @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary" />
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

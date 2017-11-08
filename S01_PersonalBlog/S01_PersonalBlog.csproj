@@ -1,0 +1,717 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E499E93D-C611-4521-9E39-1C093C04B1B9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>S01_PersonalBlog</RootNamespace>
+    <AssemblyName>S01_PersonalBlog</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AngleSharp, Version=0.9.9.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
+      <HintPath>..\packages\AngleSharp.0.9.9\lib\net45\AngleSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.6.2.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.6.2\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlSanitizer, Version=3.0.0.0, Culture=neutral, PublicKeyToken=61c49a1a9e79cc28, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlSanitizer.4.0.181\lib\net45\HtmlSanitizer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.EntityFramework, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.EntityFramework.1.0.1\lib\net45\PagedList.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BloggersController.cs" />
+    <Compile Include="Controllers\CommentsAPIController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PostAPIController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
+    <Compile Include="CustomValidators\Validators.cs" />
+    <Compile Include="Custom_Attributes\CustomApplicationAttributes.cs" />
+    <Compile Include="Custom_helpers\CustomHelperClass.cs" />
+    <Compile Include="DAL\ApplicationDbContext.cs" />
+    <Compile Include="DTOs\CommentDTOs.cs" />
+    <Compile Include="DTOs\PostDTOs.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709231415438_Init.cs" />
+    <Compile Include="Migrations\201709231415438_Init.Designer.cs">
+      <DependentUpon>201709231415438_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709231628512_PostCommentTagModelAddition.cs" />
+    <Compile Include="Migrations\201709231628512_PostCommentTagModelAddition.Designer.cs">
+      <DependentUpon>201709231628512_PostCommentTagModelAddition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709231756240_Any.cs" />
+    <Compile Include="Migrations\201709231756240_Any.Designer.cs">
+      <DependentUpon>201709231756240_Any.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709231815454_AuthorIdFKtoPostModel.cs" />
+    <Compile Include="Migrations\201709231815454_AuthorIdFKtoPostModel.Designer.cs">
+      <DependentUpon>201709231815454_AuthorIdFKtoPostModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709231925219_RemovedNavPropertyFromTagModel.cs" />
+    <Compile Include="Migrations\201709231925219_RemovedNavPropertyFromTagModel.Designer.cs">
+      <DependentUpon>201709231925219_RemovedNavPropertyFromTagModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709232056291_PostRefernceInTagModel.cs" />
+    <Compile Include="Migrations\201709232056291_PostRefernceInTagModel.Designer.cs">
+      <DependentUpon>201709232056291_PostRefernceInTagModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709232106313_OnCascadeDeleteTruePostTags.cs" />
+    <Compile Include="Migrations\201709232106313_OnCascadeDeleteTruePostTags.Designer.cs">
+      <DependentUpon>201709232106313_OnCascadeDeleteTruePostTags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709261056583_TileToTitleReplace.cs" />
+    <Compile Include="Migrations\201709261056583_TileToTitleReplace.Designer.cs">
+      <DependentUpon>201709261056583_TileToTitleReplace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709261616031_AddedFKtoCommentModel.cs" />
+    <Compile Include="Migrations\201709261616031_AddedFKtoCommentModel.Designer.cs">
+      <DependentUpon>201709261616031_AddedFKtoCommentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709262002035_AddedFKPostIDtoCommentModel.cs" />
+    <Compile Include="Migrations\201709262002035_AddedFKPostIDtoCommentModel.Designer.cs">
+      <DependentUpon>201709262002035_AddedFKPostIDtoCommentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709271741094_PostCommentOnDeleteCascade.cs" />
+    <Compile Include="Migrations\201709271741094_PostCommentOnDeleteCascade.Designer.cs">
+      <DependentUpon>201709271741094_PostCommentOnDeleteCascade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709271857346_AddedIsNestedCommentPropetyToCommentModel.cs" />
+    <Compile Include="Migrations\201709271857346_AddedIsNestedCommentPropetyToCommentModel.Designer.cs">
+      <DependentUpon>201709271857346_AddedIsNestedCommentPropetyToCommentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710020253243_AppUserModelChange.cs" />
+    <Compile Include="Migrations\201710020253243_AppUserModelChange.Designer.cs">
+      <DependentUpon>201710020253243_AppUserModelChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710020300548_AppUserModelChange2.cs" />
+    <Compile Include="Migrations\201710020300548_AppUserModelChange2.Designer.cs">
+      <DependentUpon>201710020300548_AppUserModelChange2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710020304041_AppUserModelChange3.cs" />
+    <Compile Include="Migrations\201710020304041_AppUserModelChange3.Designer.cs">
+      <DependentUpon>201710020304041_AppUserModelChange3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710020312130_AppUserModelChange4.cs" />
+    <Compile Include="Migrations\201710020312130_AppUserModelChange4.Designer.cs">
+      <DependentUpon>201710020312130_AppUserModelChange4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710020735407_ApplicationUserChange.cs" />
+    <Compile Include="Migrations\201710020735407_ApplicationUserChange.Designer.cs">
+      <DependentUpon>201710020735407_ApplicationUserChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710021440550_AppUserModelChange5.cs" />
+    <Compile Include="Migrations\201710021440550_AppUserModelChange5.Designer.cs">
+      <DependentUpon>201710021440550_AppUserModelChange5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710051612557_CommentModelChange.cs" />
+    <Compile Include="Migrations\201710051612557_CommentModelChange.Designer.cs">
+      <DependentUpon>201710051612557_CommentModelChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710052210522_AttributesAddition.cs" />
+    <Compile Include="Migrations\201710052210522_AttributesAddition.Designer.cs">
+      <DependentUpon>201710052210522_AttributesAddition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710052225571_ApplicationUserChange1.cs" />
+    <Compile Include="Migrations\201710052225571_ApplicationUserChange1.Designer.cs">
+      <DependentUpon>201710052225571_ApplicationUserChange1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710061356556_PostModelChange.cs" />
+    <Compile Include="Migrations\201710061356556_PostModelChange.Designer.cs">
+      <DependentUpon>201710061356556_PostModelChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710061403372_TagModelChange.cs" />
+    <Compile Include="Migrations\201710061403372_TagModelChange.Designer.cs">
+      <DependentUpon>201710061403372_TagModelChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710071623200_UserModelChange.cs" />
+    <Compile Include="Migrations\201710071623200_UserModelChange.Designer.cs">
+      <DependentUpon>201710071623200_UserModelChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710071708403_AddBloggerIdToUserModel.cs" />
+    <Compile Include="Migrations\201710071708403_AddBloggerIdToUserModel.Designer.cs">
+      <DependentUpon>201710071708403_AddBloggerIdToUserModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710100339381_UserModelChange1.cs" />
+    <Compile Include="Migrations\201710100339381_UserModelChange1.Designer.cs">
+      <DependentUpon>201710100339381_UserModelChange1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710101602338_ImagePathModelCreated.cs" />
+    <Compile Include="Migrations\201710101602338_ImagePathModelCreated.Designer.cs">
+      <DependentUpon>201710101602338_ImagePathModelCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710101659282_DbContextImagePathAddition.cs" />
+    <Compile Include="Migrations\201710101659282_DbContextImagePathAddition.Designer.cs">
+      <DependentUpon>201710101659282_DbContextImagePathAddition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710110128268_DislikeFieldToPostAndCommentModels.cs" />
+    <Compile Include="Migrations\201710110128268_DislikeFieldToPostAndCommentModels.Designer.cs">
+      <DependentUpon>201710110128268_DislikeFieldToPostAndCommentModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710111433193_VotingModelAddition.cs" />
+    <Compile Include="Migrations\201710111433193_VotingModelAddition.Designer.cs">
+      <DependentUpon>201710111433193_VotingModelAddition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710132316463_VotingModelChange.cs" />
+    <Compile Include="Migrations\201710132316463_VotingModelChange.Designer.cs">
+      <DependentUpon>201710132316463_VotingModelChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710142212338_TagModelForeingKey.cs" />
+    <Compile Include="Migrations\201710142212338_TagModelForeingKey.Designer.cs">
+      <DependentUpon>201710142212338_TagModelForeingKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710142259141_PostVoteAndCommentVoteModelsAdded.cs" />
+    <Compile Include="Migrations\201710142259141_PostVoteAndCommentVoteModelsAdded.Designer.cs">
+      <DependentUpon>201710142259141_PostVoteAndCommentVoteModelsAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710150022420_NullableForeingKeyOnVote.cs" />
+    <Compile Include="Migrations\201710150022420_NullableForeingKeyOnVote.Designer.cs">
+      <DependentUpon>201710150022420_NullableForeingKeyOnVote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710150055391_CascadeDeleteDbContext.cs" />
+    <Compile Include="Migrations\201710150055391_CascadeDeleteDbContext.Designer.cs">
+      <DependentUpon>201710150055391_CascadeDeleteDbContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710151757584_UserIdentityModelChange.cs" />
+    <Compile Include="Migrations\201710151757584_UserIdentityModelChange.Designer.cs">
+      <DependentUpon>201710151757584_UserIdentityModelChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710201653567_CommentCascadeDelete.cs" />
+    <Compile Include="Migrations\201710201653567_CommentCascadeDelete.Designer.cs">
+      <DependentUpon>201710201653567_CommentCascadeDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710201659044_CommentCascadeDelete2.cs" />
+    <Compile Include="Migrations\201710201659044_CommentCascadeDelete2.Designer.cs">
+      <DependentUpon>201710201659044_CommentCascadeDelete2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710201706595_CommentCascadeDelete3.cs" />
+    <Compile Include="Migrations\201710201706595_CommentCascadeDelete3.Designer.cs">
+      <DependentUpon>201710201706595_CommentCascadeDelete3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710201711036_CommentCascadeDelete4.cs" />
+    <Compile Include="Migrations\201710201711036_CommentCascadeDelete4.Designer.cs">
+      <DependentUpon>201710201711036_CommentCascadeDelete4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710210221572_CommentModelChangeCascadingDelete.cs" />
+    <Compile Include="Migrations\201710210221572_CommentModelChangeCascadingDelete.Designer.cs">
+      <DependentUpon>201710210221572_CommentModelChangeCascadingDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710210505206_AddsCommenNestingLevel.cs" />
+    <Compile Include="Migrations\201710210505206_AddsCommenNestingLevel.Designer.cs">
+      <DependentUpon>201710210505206_AddsCommenNestingLevel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710240549206_AddsHeaderPropToPostModel.cs" />
+    <Compile Include="Migrations\201710240549206_AddsHeaderPropToPostModel.Designer.cs">
+      <DependentUpon>201710240549206_AddsHeaderPropToPostModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ImagePath.cs" />
+    <Compile Include="Models\Vote.cs" />
+    <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\BloggerViewModels.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="ViewModels\CommentViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="ViewModels\ManageViewModels.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="ViewModels\PostViewModels.cs" />
+    <Compile Include="Models\Tag.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\landingPage.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Site.css">
+      <DependentUpon>Site.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
+    </Content>
+    <Content Include="Content\summernote.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\originalSite.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="fonts\summernote.eot" />
+    <Content Include="fonts\summernote.ttf" />
+    <Content Include="fonts\summernote.woff" />
+    <Content Include="Content\font\summernote.eot" />
+    <Content Include="Content\font\summernote.ttf" />
+    <Content Include="Content\font\summernote.woff" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="Content\Site.scss" />
+    <Content Include="Images\icon.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.2.1.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\summernote.js" />
+    <Content Include="Scripts\summernote.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Posts\Create.cshtml" />
+    <Content Include="Views\Posts\Delete.cshtml" />
+    <Content Include="Views\Posts\Details.cshtml" />
+    <Content Include="Views\Posts\Edit.cshtml" />
+    <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Views\Comments\Create.cshtml" />
+    <Content Include="Views\Comments\Delete.cshtml" />
+    <Content Include="Views\Comments\Details.cshtml" />
+    <Content Include="Views\Comments\Edit.cshtml" />
+    <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="Views\Shared\_Comment.cshtml" />
+    <Content Include="Views\Bloggers\Index.cshtml" />
+    <Content Include="Views\Bloggers\Details.cshtml" />
+    <Content Include="Views\Manage\EditProfile.cshtml" />
+    <Content Include="Views\Shared\_PostPartial.cshtml" />
+    <Content Include="tsconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709231415438_Init.resx">
+      <DependentUpon>201709231415438_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709231628512_PostCommentTagModelAddition.resx">
+      <DependentUpon>201709231628512_PostCommentTagModelAddition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709231756240_Any.resx">
+      <DependentUpon>201709231756240_Any.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709231815454_AuthorIdFKtoPostModel.resx">
+      <DependentUpon>201709231815454_AuthorIdFKtoPostModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709231925219_RemovedNavPropertyFromTagModel.resx">
+      <DependentUpon>201709231925219_RemovedNavPropertyFromTagModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709232056291_PostRefernceInTagModel.resx">
+      <DependentUpon>201709232056291_PostRefernceInTagModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709232106313_OnCascadeDeleteTruePostTags.resx">
+      <DependentUpon>201709232106313_OnCascadeDeleteTruePostTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709261056583_TileToTitleReplace.resx">
+      <DependentUpon>201709261056583_TileToTitleReplace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709261616031_AddedFKtoCommentModel.resx">
+      <DependentUpon>201709261616031_AddedFKtoCommentModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709262002035_AddedFKPostIDtoCommentModel.resx">
+      <DependentUpon>201709262002035_AddedFKPostIDtoCommentModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709271741094_PostCommentOnDeleteCascade.resx">
+      <DependentUpon>201709271741094_PostCommentOnDeleteCascade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709271857346_AddedIsNestedCommentPropetyToCommentModel.resx">
+      <DependentUpon>201709271857346_AddedIsNestedCommentPropetyToCommentModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710020253243_AppUserModelChange.resx">
+      <DependentUpon>201710020253243_AppUserModelChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710020300548_AppUserModelChange2.resx">
+      <DependentUpon>201710020300548_AppUserModelChange2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710020304041_AppUserModelChange3.resx">
+      <DependentUpon>201710020304041_AppUserModelChange3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710020312130_AppUserModelChange4.resx">
+      <DependentUpon>201710020312130_AppUserModelChange4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710020735407_ApplicationUserChange.resx">
+      <DependentUpon>201710020735407_ApplicationUserChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710021440550_AppUserModelChange5.resx">
+      <DependentUpon>201710021440550_AppUserModelChange5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710051612557_CommentModelChange.resx">
+      <DependentUpon>201710051612557_CommentModelChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710052210522_AttributesAddition.resx">
+      <DependentUpon>201710052210522_AttributesAddition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710052225571_ApplicationUserChange1.resx">
+      <DependentUpon>201710052225571_ApplicationUserChange1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710061356556_PostModelChange.resx">
+      <DependentUpon>201710061356556_PostModelChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710061403372_TagModelChange.resx">
+      <DependentUpon>201710061403372_TagModelChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710071623200_UserModelChange.resx">
+      <DependentUpon>201710071623200_UserModelChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710071708403_AddBloggerIdToUserModel.resx">
+      <DependentUpon>201710071708403_AddBloggerIdToUserModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710100339381_UserModelChange1.resx">
+      <DependentUpon>201710100339381_UserModelChange1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710101602338_ImagePathModelCreated.resx">
+      <DependentUpon>201710101602338_ImagePathModelCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710101659282_DbContextImagePathAddition.resx">
+      <DependentUpon>201710101659282_DbContextImagePathAddition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710110128268_DislikeFieldToPostAndCommentModels.resx">
+      <DependentUpon>201710110128268_DislikeFieldToPostAndCommentModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710111433193_VotingModelAddition.resx">
+      <DependentUpon>201710111433193_VotingModelAddition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710132316463_VotingModelChange.resx">
+      <DependentUpon>201710132316463_VotingModelChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710142212338_TagModelForeingKey.resx">
+      <DependentUpon>201710142212338_TagModelForeingKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710142259141_PostVoteAndCommentVoteModelsAdded.resx">
+      <DependentUpon>201710142259141_PostVoteAndCommentVoteModelsAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710150022420_NullableForeingKeyOnVote.resx">
+      <DependentUpon>201710150022420_NullableForeingKeyOnVote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710150055391_CascadeDeleteDbContext.resx">
+      <DependentUpon>201710150055391_CascadeDeleteDbContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710151757584_UserIdentityModelChange.resx">
+      <DependentUpon>201710151757584_UserIdentityModelChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710201653567_CommentCascadeDelete.resx">
+      <DependentUpon>201710201653567_CommentCascadeDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710201659044_CommentCascadeDelete2.resx">
+      <DependentUpon>201710201659044_CommentCascadeDelete2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710201706595_CommentCascadeDelete3.resx">
+      <DependentUpon>201710201706595_CommentCascadeDelete3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710201711036_CommentCascadeDelete4.resx">
+      <DependentUpon>201710201711036_CommentCascadeDelete4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710210221572_CommentModelChangeCascadingDelete.resx">
+      <DependentUpon>201710210221572_CommentModelChangeCascadingDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710210505206_AddsCommenNestingLevel.resx">
+      <DependentUpon>201710210505206_AddsCommenNestingLevel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710240549206_AddsHeaderPropToPostModel.resx">
+      <DependentUpon>201710240549206_AddsHeaderPropToPostModel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\App\site.ts" />
+    <TypeScriptCompile Include="Scripts\App\summernotInit.ts" />
+    <TypeScriptCompile Include="Scripts\typings\bootstrap\index.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery.validation\jquery.validation.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\typings.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56312</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:56312/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

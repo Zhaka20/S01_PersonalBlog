@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    ViewBag.PageClass = ViewBag.PageId = "home-index-page";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/landingPage.css" />
+<div class="row text-center header-text">
+    <div class="col-md-12">
+        <h3><span>Simple personal blogging web site!</span></h3>
+    </div>
+</div>
+<div class="row">
+    <form action="/posts" method="get" class="form-horizontal search-form">
+        <div class="form-group">
+            <div class="col-md-3 col-sm-12 text-center"><span class="search-span">Search for a Post </span></div>
+            <div class="col-md-6">
+                <input type="text" name="search" class="form-control" />
+            </div>
+            <div class="col-md-2 col-sm-12 text-center col-md-pull-1"><button type="submit" class="btn btn-default search-btn">Search</button></div>
+        </div>
+    </form>
+</div>
+<div class="row log-in-row">
+    @if (!User.Identity.IsAuthenticated)
+    {
+    <div class="col-md-6 login-div">
+        <form action="/Account/Login" class="form-horizontal" method="post" role="form" novalidate="novalidate">
+         @Html.AntiForgeryToken()
+         <h4 class="text-center">Sign In or Register</h4>
+            <hr>
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="Email">Email</label>
+                <div class="col-md-9">
+                    <input class="form-control" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." id="Email" name="Email" type="text" value="">
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="Password">Password</label>
+                <div class="col-md-9">
+                    <input class="form-control" data-val="true" data-val-required="The Password field is required." id="Password" name="Password" type="password">
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-9 col-md-offset-3">
+                    <div class="checkbox">
+                        <input data-val="true" data-val-required="The Remember me? field is required." id="RememberMe" name="RememberMe" type="checkbox" value="true"><input name="RememberMe" type="hidden" value="false">
+                        <label for="RememberMe">Remember me?</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-9 col-md-offset-3">
+                    <input type="submit"value="Log in" class="btn btn-default sign-in-btn">
+                </div>
+            </div>
+            <div class="register-div">
+                <p>
+                    <a href="/Account/Register">Register as a new user</a>
+                </p>
+            </div>
+            <hr id="login-separator">
+        </form>
+    </div>
+    }     
+        <div class="col-sm-8 col-sm-push-2 col-md-4 col-md-push-0 text-center">
+            <h2>Start reading latest Posts</h2>
+            <p>There are hundreds of posts that you may find useful or just interesting. Use search to find what you are interested in!</p>
+            <p>@Html.RouteLink("Go to Posts", "Post", new { Action = "Index" }, new { @class = "btn btn-default" })</p>
+        </div>
+     @if (User.Identity.IsAuthenticated)
+    {
+        <div class="col-sm-8 col-sm-push-2 col-md-4 col-md-push-0 text-center">
+            <h2>Edit your Profile</h2>
+            <p>Tell us more about yourself. Add your picture...</p>
+            <p><a class="btn btn-default" href="@Url.RouteUrl("Default",new {action = "EditProfile",controller = "Manage" })">Profile Editor &raquo;</a></p>
+        </div>
+    }
+        <div class="col-sm-8 col-sm-push-2 col-md-4 col-md-push-0 text-center">
+            <h2>Our Bloggers</h2>
+            <p>Learn more about our bloggers!</p>
+            <p><a class="btn btn-default" href="@Url.RouteUrl("Default",new {action = "Index",controller = "Bloggers" })">See our bloggers &raquo;</a></p>
+        </div>
+</div>
+

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<S01_PersonalBlog.Models.Comment>
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.PageClass = ViewBag.PageId = "comments-index-page";
+    string postId = ViewContext.RouteData.Values["postId"] as string;
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.RouteLink("Create New", "Comment", new { Action = "Create", postId = postId })
+</p>
+<table class="table">
+    <tr>
+        <th class="col-md-2">
+            @Html.DisplayNameFor(model => model.Author.NickName)
+        </th>
+        <th class="col-md-6">
+            @Html.DisplayNameFor(model => model.Content)
+        </th>
+        <th class="col-md-2">
+            @Html.DisplayNameFor(model => model.CommentDate)
+        </th>
+        <th class="col-md-2"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author.NickName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentDate)
+        </td>
+        <td>
+            @Html.RouteLink("Edit", "Comment", new { Action = "Edit", commentId = item.CommentID, postId = postId }) |
+            @Html.RouteLink("Details", "Comment", new {Action = "Details", commentId = item.CommentID, postId = postId }) |
+            @Html.RouteLink("Delete", "Comment", new { Action = "Delete", commentId = item.CommentID, postId = postId })
+        </td>
+    </tr>
+}
+
+</table>

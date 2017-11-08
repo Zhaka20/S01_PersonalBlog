@@ -1,0 +1,39 @@
+﻿@using S01_PersonalBlog.Custom_helpers
+@using PagedList.Mvc
+@model S01_PersonalBlog.ViewModels.BloggerDetailViewModel
+@{
+    ViewBag.Title = "Details";
+    ViewBag.PageClass = ViewBag.PageId = "bloggers-details-page";
+}
+
+<div id="blogger-details-page">
+    <h2>Blogger</h2>
+    <div class="blogger-div">
+        <div class="container">
+            <div class="row bg-info info-row">
+                <div class="col col-md-6 bg-info">
+                    <span class="nickname">@Html.DisplayFor(model => model.NickName)</span>
+                </div>
+            </div>
+            <div class="row about-div content-row">
+                <div class="col col-md-2">
+                    <img @(string.IsNullOrEmpty(Model.ImageFile) ? "" : string.Format("src={0}", "/Content/Images/" + Model.ImageFile)) class="avatar img-rounded" />
+                </div>
+                <div class="col col-md-10">
+                    @Html.DisplayFor(model => model.About)
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <h3>Posts</h3>
+    <div class="container posts-div">
+        @foreach (var post in Model.Posts)
+        {
+            @Html.Partial("_PostPartial", post);
+        }
+    </div>
+    Page @(Model.Posts.PageCount < Model.Posts.PageNumber ? 0 : Model.Posts.PageNumber) of @Model.Posts.PageCount
+    @Html.PagedListPager(Model.Posts, page => Url.RouteUrl("Blogger", new { page, id = Model.BloggerId }))
+
+</div>
