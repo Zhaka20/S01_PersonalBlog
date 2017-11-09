@@ -16,96 +16,97 @@ using Microsoft.AspNet.Identity;
 
 namespace S01_PersonalBlog.Controllers
 {
+
     public class PostAPIController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/PostAPI
-        public IQueryable<Post> GetPosts()
-        {
-            return db.Posts;
-        }
+        //// GET: api/PostAPI
+        //public IQueryable<Post> GetPosts()
+        //{
+        //    return db.Posts;
+        //}
 
-        // GET: api/PostAPI/5
-        [ResponseType(typeof(Post))]
-        public async Task<IHttpActionResult> GetPost(int id)
-        {
-            Post post = await db.Posts.FindAsync(id);
-            if (post == null)
-            {
-                return NotFound();
-            }
+        //// GET: api/PostAPI/5
+        //[ResponseType(typeof(Post))]
+        //public async Task<IHttpActionResult> GetPost(int id)
+        //{
+        //    Post post = await db.Posts.FindAsync(id);
+        //    if (post == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(post);
-        }
+        //    return Ok(post);
+        //}
 
-        // PUT: api/PostAPI/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutPost(int id, Post post)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// PUT: api/PostAPI/5
+        //[ResponseType(typeof(void))]
+        //public async Task<IHttpActionResult> PutPost(int id, Post post)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != post.PostID)
-            {
-                return BadRequest();
-            }
+        //    if (id != post.PostID)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            db.Entry(post).State = EntityState.Modified;
+        //    db.Entry(post).State = EntityState.Modified;
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PostExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await db.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!PostExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
-        // POST: api/PostAPI
-        [ResponseType(typeof(Post))]
-        public async Task<IHttpActionResult> PostPost(Post post)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// POST: api/PostAPI
+        //[ResponseType(typeof(Post))]
+        //public async Task<IHttpActionResult> PostPost(Post post)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.Posts.Add(post);
-            await db.SaveChangesAsync();
+        //    db.Posts.Add(post);
+        //    await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = post.PostID }, post);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = post.PostID }, post);
+        //}
 
-        // DELETE: api/PostAPI/5
-        [ResponseType(typeof(Post))]
-        public async Task<IHttpActionResult> DeletePost(int id)
-        {
-            Post post = await db.Posts.FindAsync(id);
-            if (post == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/PostAPI/5
+        //[ResponseType(typeof(Post))]
+        //public async Task<IHttpActionResult> DeletePost(int id)
+        //{
+        //    Post post = await db.Posts.FindAsync(id);
+        //    if (post == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.Posts.Remove(post);
-            await db.SaveChangesAsync();
+        //    db.Posts.Remove(post);
+        //    await db.SaveChangesAsync();
 
-            return Ok(post);
-        }
+        //    return Ok(post);
+        //}
 
-
+        [System.Web.Mvc.ValidateAntiForgeryToken]
         [Route("~/api/posts/UpVote/{id:int}")]
         [HttpPost]
         public async Task<IHttpActionResult> UpVote(int id)
@@ -153,6 +154,7 @@ namespace S01_PersonalBlog.Controllers
             }
             return Ok();
         }
+        [System.Web.Mvc.ValidateAntiForgeryToken]
         [Route("~/api/posts/DownVote/{id:int}")]
         [HttpPost]
         public async Task<IHttpActionResult> DownVote(int id)
